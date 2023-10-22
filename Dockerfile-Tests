@@ -1,0 +1,6 @@
+FROM python:latest
+WORKDIR /usr/src
+ADD requirements.txt requirements.txt
+COPY src .
+RUN pip install -r requirements.txt
+CMD python -m unittest discover .
