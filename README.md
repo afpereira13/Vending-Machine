@@ -17,6 +17,10 @@ Run the following commands in the terminal to Builds, (re)creates, starts, and a
 docker compose up vending_machine_app
 ```
 
+## How to use
+Since the Vending-Machine is an API, start to check the available endpoints (check [API Documentation](#api-documentation))
+To use any endpoint it is possible to make all the requests using API Documentation Page. In each endpoint, press the 'Try it out' button, and fill the values if needed.
+But if you prefer use the terminal (curl) or use any API platform (e.g. Postman).
 
 # Technical Description
 The project is separated into 3 main parts:

@@ -15,13 +15,9 @@ class DatabaseService:
         self.connect_db(db_host)
 
     def get_products(self):
-        try:
-            self.db_cursor.execute("SELECT * FROM vendingmachine WHERE quantity > 0")
-            rows = self.db_cursor.fetchall()
-            return rows
-        except Exception as e:
-            print(e.message)
-            self.connect_db
+        self.db_cursor.execute("SELECT * FROM vendingmachine WHERE quantity > 0")
+        rows = self.db_cursor.fetchall()
+        return rows
 
     def get_product_price(self, prod_name):
         self.db_cursor.execute(f"SELECT price FROM vendingmachine WHERE prod_name = '{prod_name}'")
