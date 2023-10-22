@@ -65,8 +65,7 @@ The DB is composed by 3 tables:
 
 ## Unit Tests
 ```
-docker build -t test_some_module -f Dockerfile-Tests .
-docker run -it --name test_some_module --rm test_some_module
+docker compose up vending_machine_tests
 ```
 
 # Future Targets
