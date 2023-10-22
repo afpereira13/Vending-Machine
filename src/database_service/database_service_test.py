@@ -33,7 +33,7 @@ class DatabaseServiceTest(unittest.TestCase):
         self.database_service.delete_product("bananas")
         number_of_products_delete = len(self.database_service.get_products())
 
-        self.assertEqual(number_of_products_insert, number_of_products+1)
+        self.assertEqual(number_of_products_insert, number_of_products + 1)
         self.assertEqual(number_of_products_delete, number_of_products)
 
     def test_get_change(self):
@@ -56,7 +56,7 @@ class DatabaseServiceTest(unittest.TestCase):
         self.database_service.insert_change('2p', 20)
         number_of_change_insert = len(self.database_service.get_available_change())
 
-        self.assertEqual(number_of_change_delete, number_of_change-1)
+        self.assertEqual(number_of_change_delete, number_of_change - 1)
         self.assertEqual(number_of_change_insert, number_of_change)
 
     def test_insert_sell_history(self):
@@ -64,8 +64,9 @@ class DatabaseServiceTest(unittest.TestCase):
         sell_history_size = len(self.database_service.get_sell_history())
         sell_history_product = len(self.database_service.get_sell_product_history(product))
         self.database_service.update_sell_history(product, "£2", "50")
-        self.assertEqual(len(self.database_service.get_sell_history()), sell_history_size+1)
-        self.assertEqual(len(self.database_service.get_sell_product_history(product)), sell_history_product+1)
+        self.assertEqual(len(self.database_service.get_sell_history()), sell_history_size + 1)
+        self.assertEqual(len(self.database_service.get_sell_product_history(product)), sell_history_product + 1)
+
 
 if __name__ == '__main__':
     unittest.main()

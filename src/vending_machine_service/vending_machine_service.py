@@ -1,9 +1,9 @@
-currency_dict = { 1:'1p', 2:'2p', 5:'5p', 10:'10p', 20:'20p', 50:'50p', 100:'£1', 200:'£2'}
+currency_dict = {1: '1p', 2: '2p', 5: '5p', 10: '10p', 20: '20p', 50: '50p', 100: '£1', 200: '£2'}
 
 
 def currency(value):
     if str(value).startswith("£"):
-        return int(value.replace("£", ""))*100
+        return int(value.replace("£", "")) * 100
     elif str(value).endswith("p"):
         return int(value.replace("p", ""))
     else:
@@ -18,7 +18,7 @@ def available_change_to_dict(available_change):
 
 
 class VendingMachineService:
-    bananas = 1
+
     def __init__(self, database):
         self.db_service = database
         self.items = self.db_service.get_products()
@@ -35,13 +35,13 @@ class VendingMachineService:
         price = currency(self.db_service.get_product_price(product)[0])
         payment = currency(payment)
         if price > payment or price == -1 or payment == -1:
-            return False, price-payment, "Price is higher than the inserted money!"
-        price_diff = payment-price
+            return False, price - payment, "Price is higher than the inserted money!"
+        price_diff = payment - price
         change = self.return_change(price_diff)
         if not change:
-            return False, payment-price, "No change available!"
+            return False, payment - price, "No change available!"
         change_list = []
-        for k,v in change.items():
+        for k, v in change.items():
             change_list += [k] * v
         return True, price_diff, change_list
 
@@ -89,7 +89,7 @@ class VendingMachineService:
         if value > 0:
             return False
         for coin, amount in change_coins.items():
-            self.update_change(coin, -1*amount)
+            self.update_change(coin, -1 * amount)
         return change_coins
 
     def sell_history(self):
@@ -97,5 +97,6 @@ class VendingMachineService:
 
     def get_sell_product_history(self, item):
         return self.db_service.get_sell_product_history(item)
+
     def close(self):
         self.db_service.close()

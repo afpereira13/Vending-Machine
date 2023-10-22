@@ -4,9 +4,9 @@ import psycopg2
 class DatabaseService:
     def connect_db(self, db_host='postgres'):
         self.db_connection = psycopg2.connect(database='vendingmachine',
-                                user='vending',
-                                host=db_host,
-                                password='m4CH!Ne')
+                                              user='vending',
+                                              host=db_host,
+                                              password='m4CH!Ne')
         self.db_cursor = self.db_connection.cursor()
 
     def __init__(self, db_host='postgres'):
@@ -31,7 +31,8 @@ class DatabaseService:
         return self.db_cursor.rowcount
 
     def insert_new_product(self, prod_name, quantity, price):
-        self.db_cursor.execute(f"INSERT INTO vendingmachine (prod_name, quantity, price) VALUES ('{prod_name}', {quantity}, '{price}')")
+        self.db_cursor.execute(
+            f"INSERT INTO vendingmachine (prod_name, quantity, price) VALUES ('{prod_name}', {quantity}, '{price}')")
         self.db_connection.commit()
         return self.db_cursor.rowcount
 

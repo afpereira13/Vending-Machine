@@ -1,9 +1,9 @@
-import sys
-sys.path.append('../database_service')
-
 import unittest
+import sys
 from database_service import DatabaseService
 from vending_machine_service import VendingMachineService
+
+sys.path.append('../database_service')
 
 
 class VendingMachineServiceTest(unittest.TestCase):
@@ -41,6 +41,7 @@ class VendingMachineServiceTest(unittest.TestCase):
         result = self.vending_machine.consume_product("apple", "1p")
         expect = False, 4, "Price is higher than the inserted money!"
         self.assertEqual(result, expect)
+
 
 if __name__ == '__main__':
     unittest.main()
